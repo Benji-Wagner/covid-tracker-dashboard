@@ -21,7 +21,10 @@ sidebar_module_ui_fn <- function(id) {
 
 sidebar_module_fn <- function(input, output, session, covid_data) {
   
-  variable_select_vec <- covid_data %>% select(-c("iso_code", "location", "date", "tests_units")) %>% names
+  variable_select_vec <- covid_data %>% 
+    select(-c("iso_code", "continent", "location", "date", "tests_units")) %>% 
+    names
+  
   names(variable_select_vec) <- variable_select_vec %>% 
     str_replace_all(pattern = "_", replacement = " ") %>% 
     str_to_title()
