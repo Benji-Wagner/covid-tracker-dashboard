@@ -15,6 +15,8 @@ library(tidyverse)
 library(scales)
 library(shinythemes)
 library(DT)
+library(usmap)
+library(plotly)
 
 
 # UI ----
@@ -33,12 +35,13 @@ server <- function(input, output, session) {
   
   # Globals ----
   covid_data <- read_covid_data_fn()
+  map_data <- read_covid_map_data_fn()
   
   # Reactives ----
   reac_select <- reactiveValues(var = NULL, country = NULL)
   
   var_selections <- callModule(sidebar_module_fn, "sidebar", covid_data) 
-  callModule(mainpanel_module_fn, "main", covid_data, reac_select)
+  callModule(mainpanel_module_fn, "main", covid_data, reac_select, map_data)
   
   observe({
     req(var_selections)

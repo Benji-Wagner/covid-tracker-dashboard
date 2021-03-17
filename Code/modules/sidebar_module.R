@@ -82,9 +82,8 @@ sidebar_module_fn <- function(input, output, session, covid_data) {
   updateSelectInput(session = session, 
                     inputId = "location_select", 
                     choices = country_select_vec,
-                    label = "Choose a location",
+                    label = "Choose a location:",
                     selected = "United States")
-  
   
   
   return(reac_selections)

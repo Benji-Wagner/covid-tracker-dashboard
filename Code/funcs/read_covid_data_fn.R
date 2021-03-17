@@ -5,5 +5,12 @@ read_covid_data_fn <- function() {
   # other variables of potential interest.
   
   # Download the updated data from URL
-  return(readr::read_csv(file = "https://covid.ourworldindata.org/data/owid-covid-data.csv"))
+  return(readr::read_csv(file = "https://covid.ourworldindata.org/data/owid-covid-data.csv",
+                         guess_max = 100000))
+}
+
+read_covid_map_data_fn <- function() {
+  # This data is taken from The New York Times. For more visuals, visit their website at
+  # https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html
+  return(readr::read_csv(file = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"))
 }
